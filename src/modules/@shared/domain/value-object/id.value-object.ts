@@ -12,7 +12,4 @@ export default class IdValueObject implements ValueObject {
         return this._value;
     }
 
-    equals(id: IdValueObject): boolean {
-        return this._value === id.value;
-    }
 }
