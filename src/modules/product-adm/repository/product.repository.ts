@@ -6,6 +6,7 @@ import IdValueObject from "../../@shared/domain/value-object/id.value-object";
 export default class ProductRepository implements ProductGateway {
 
     async add(product: Product): Promise<void> {
+
         await ProductModel.create({
             id: product.id.value,
             name: product.name,
