@@ -1,6 +1,5 @@
 import ClientGateway from "../../gateway/client.gateway";
 import AddClientUsecase from "./add-client.usecase";
-import IdValueObject from "../../../@shared/domain/value-object/id.value-object";
 
 const MockRepository = () => {
     return {

@@ -1,7 +1,8 @@
 import ProductRepository from "../../repository/product.repository";
 import {FindByIdInputDto, FindByIdOutputDto} from "./find-by-id.dto";
+import UseCaseInterface from "../../../@shared/usecase/usecase.interface";
 
-export default class FindByIdUsecase {
+export default class FindByIdUsecase implements UseCaseInterface {
     private productRepository: ProductRepository;
 
     constructor(productRepository: ProductRepository) {

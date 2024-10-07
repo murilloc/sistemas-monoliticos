@@ -4,8 +4,6 @@ import ClientRepository from "../repository/client.respository";
 import AddClientUseCase from "../usecase/add-client/add-client.usecase";
 import ClientAdmFacade from "./client-adm.facade";
 import FindByIdUsecase from "../usecase/find-by-id/find-by-id.usecase";
-import IdValueObject from "../../@shared/domain/value-object/id.value-object";
-import AddProductUsecase from "../../product-adm/usecase/add-product/add-product.usecase";
 import ClientAdmFacadeFactory from "../factory/client-adm.facade.factory";
 
 describe('ClientAdmFacade unit test', () => {

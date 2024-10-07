@@ -1,7 +1,6 @@
 import FindByIdUsecase from "../usecase/find-by-id/find-by-id.usecase";
 import FindAllProductsUseCase from "../usecase/find-all-products/find-all-products.usecase";
 import StoreCatalogFacadeInterface from "./store-catalog.facade.interface";
-import {FindByIdOutputDto} from "../usecase/find-by-id/find-by-id.dto";
 import {FindByIdStoreCatalogFacadeOutputDto} from "./store-catalog.facade.dto";
 import {FindAllProductsOutputDto} from "../usecase/find-all-products/find-all-products.dto";
 
