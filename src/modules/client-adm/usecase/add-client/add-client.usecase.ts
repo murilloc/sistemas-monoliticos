@@ -1,8 +1,8 @@
 import UseCaseInterface from "../../../@shared/usecase/usecase.interface";
 import {AddClientInputDto, AddClientOutputDto} from "./add-client.usecase.dto";
 import ClientGateway from "../../gateway/client.gateway";
-import IdValueObject from "../../../@shared/domain/value-object/id.value-object";
-import Client from "../../domail/client.entity";
+import IdValueObject from "../../../@shared/value-object/id.value-object";
+import Client from "../../domain/client.entity";
 
 export default class AddClientUseCase implements UseCaseInterface {
 

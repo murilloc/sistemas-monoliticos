@@ -9,15 +9,36 @@ export default class FindByIdUsecase implements UseCaseInterface {
         this.productRepository = productRepository;
     }
 
-    async execute(inputDto: FindByIdInputDto): Promise<FindByIdOutputDto> {
+    async execute(input: FindByIdInputDto): Promise<FindByIdOutputDto> {
+
+        class InputDto implements FindByIdInputDto {
+            id: string;
+
+            constructor(id: string) {
+                this.id = id;
+            }
+        }
+
+        const inputDto = new InputDto(input.id);
+
         const product = await this.productRepository.findById(inputDto.id);
 
-        return {
-            id: product.id.value,
-            name: product.name,
-            description: product.description,
-            salesPrice: product.salesPrice,
-        };
+        class OutputDto implements FindByIdOutputDto {
+            id: string;
+            name: string;
+            description: string;
+            salesPrice: number;
+
+            constructor(id: string, name: string, description: string, salesPrice: number) {
+                this.id = id;
+                this.name = name;
+                this.description = description;
+                this.salesPrice = salesPrice;
+            }
+        }
+
+        return new OutputDto(product.id.value, product.name, product.description, product.salesPrice);
+
     }
 
 }

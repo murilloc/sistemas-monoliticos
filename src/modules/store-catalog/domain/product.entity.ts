@@ -1,6 +1,6 @@
 import BaseEntity from "../../@shared/domain/entity/base.entity";
 import AggregateRoot from "../../@shared/domain/entity/aggregate-root.interface";
-import IdValueObject from "../../@shared/domain/value-object/id.value-object";
+import IdValueObject from "../../@shared/value-object/id.value-object";
 
 type ProductProps = {
     // id é obrigatório e deve ser do tipo IdValueObject

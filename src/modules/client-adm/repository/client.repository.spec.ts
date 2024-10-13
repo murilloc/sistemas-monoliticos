@@ -1,7 +1,7 @@
 import {Sequelize} from "sequelize-typescript";
 import {ClientModel} from "./client.model";
-import IdValueObject from "../../@shared/domain/value-object/id.value-object";
-import Client from "../domail/client.entity";
+import IdValueObject from "../../@shared/value-object/id.value-object";
+import Client from "../domain/client.entity";
 import ClientRepository from "./client.respository";
 
 describe('ClientRepository unit test', () => {

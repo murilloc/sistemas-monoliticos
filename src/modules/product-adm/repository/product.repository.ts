@@ -1,7 +1,7 @@
 import ProductGateway from "../gateway/product.gateway";
 import Product from "../domain/product.entity";
 import {ProductModel} from "./product.model";
-import IdValueObject from "../../@shared/domain/value-object/id.value-object";
+import IdValueObject from "../../@shared/value-object/id.value-object";
 
 export default class ProductRepository implements ProductGateway {
 
@@ -21,7 +21,6 @@ export default class ProductRepository implements ProductGateway {
     async findById(id: string): Promise<Product> {
         const product = await ProductModel.findOne({where: {id}});
         if (!product) {
-
             throw new Error(`Product with id ${id} not found`);
         }
 

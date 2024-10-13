@@ -1,6 +1,6 @@
-import Client from "../../domail/client.entity";
+import Client from "../../domain/client.entity";
 import FindClientByIdUsecase from "./find-by-id.usecase";
-import IdValueObject from "../../../@shared/domain/value-object/id.value-object";
+import IdValueObject from "../../../@shared/value-object/id.value-object";
 
 const client = new Client({
     id: new IdValueObject("1"),

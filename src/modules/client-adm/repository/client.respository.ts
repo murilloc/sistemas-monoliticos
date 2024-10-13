@@ -1,7 +1,7 @@
 import ClientGateway from "../gateway/client.gateway";
-import Client from "../domail/client.entity";
+import Client from "../domain/client.entity";
 import {ClientModel} from "./client.model";
-import IdValueObject from "../../@shared/domain/value-object/id.value-object";
+import IdValueObject from "../../@shared/value-object/id.value-object";
 
 export default class ClientRepository implements ClientGateway {
     async add(client: Client): Promise<void> {

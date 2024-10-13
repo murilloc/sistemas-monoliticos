@@ -1,5 +1,5 @@
 import Transaction from "../../domain/transaction.entity";
-import IdValueObject from "../../../@shared/domain/value-object/id.value-object";
+import IdValueObject from "../../../@shared/value-object/id.value-object";
 import ProcessPaymentUseCase from "./process-payment.usecase";
 
 const approvedTransaction = new Transaction({

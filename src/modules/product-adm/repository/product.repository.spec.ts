@@ -2,7 +2,7 @@ import {Sequelize} from "sequelize-typescript";
 import {ProductModel} from "./product.model";
 import ProductRepository from "./product.repository";
 import Product from "../domain/product.entity";
-import IdValueObject from "../../@shared/domain/value-object/id.value-object";
+import IdValueObject from "../../@shared/value-object/id.value-object";
 
 describe("ProductRepository unit test", () => {
 
@@ -24,7 +24,6 @@ describe("ProductRepository unit test", () => {
         await sequelize.close();
 
     });
-
 
     it("should add a product", async () => {
         const productProps = {

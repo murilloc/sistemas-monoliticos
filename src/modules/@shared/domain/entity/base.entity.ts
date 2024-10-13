@@ -1,4 +1,4 @@
-import IdValueObject from "../value-object/id.value-object";
+import IdValueObject from "../../value-object/id.value-object";
 
 export default class BaseEntity {
     private _id: IdValueObject;

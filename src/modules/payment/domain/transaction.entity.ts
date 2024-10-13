@@ -1,4 +1,4 @@
-import IdValueObject from "../../@shared/domain/value-object/id.value-object";
+import IdValueObject from "../../@shared/value-object/id.value-object";
 import BaseEntity from "../../@shared/domain/entity/base.entity";
 import AggregateRoot from "../../@shared/domain/entity/aggregate-root.interface";
 

@@ -1,5 +1,5 @@
 import Product from "../../domain/product.entity";
-import IdValueObject from "../../../@shared/domain/value-object/id.value-object";
+import IdValueObject from "../../../@shared/value-object/id.value-object";
 import CheckStockUsecase from "./check-stock.usacase";
 
 const product = new Product({
