@@ -68,8 +68,4 @@ describe("ProductRepository unit test", () => {
         expect(product.stock).toBe(10);
 
     });
-
-
-
-
 });

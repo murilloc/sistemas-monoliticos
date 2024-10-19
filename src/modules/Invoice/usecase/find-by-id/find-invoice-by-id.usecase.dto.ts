@@ -1,8 +1,8 @@
-export interface FindByIdInvoiceUseCaseInputDto {
+export interface FindInvoiceByIdUseCaseInputDTO {
     id: string;
 }
 
-export interface FindByIdInvoiceUseCaseOutputDto {
+export interface FindInvoiceByIdUseCaseOutputDTO {
     id: string;
     name: string;
     document: string;

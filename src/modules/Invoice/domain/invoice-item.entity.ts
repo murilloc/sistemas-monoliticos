@@ -6,7 +6,6 @@ type InvoiceItemProps = {
     id?: IdValueObject;
     name: string;
     price: number;
-    invoiceId: string;
     createdAt?: Date;
     updatedAt?: Date;
 }

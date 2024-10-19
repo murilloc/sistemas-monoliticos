@@ -1,91 +1,106 @@
-import IdValueObject from "../../../@shared/value-object/id.value-object";
 import GenerateInvoiceUseCase from "./generate-invoice.usecase";
+import IdValueObject from "../../../@shared/value-object/id.value-object";
 
-const invoiceAddress = {
-    street: 'Main Street',
-    number: '100',
-    complement: 'Apartment 101',
-    city: 'New York',
-    state: 'NY',
-    zipCode: '123456',
-}
-const invoice = {
-    id: new IdValueObject(),
-    name: 'John Doe',
-    document: '123456789',
-    address: invoiceAddress,
+const outputInvoice = {
+    id: new IdValueObject('1'),
+    name: 'Teste',
+    document: '12345678900',
+    address: {
+        street: 'Rua Teste',
+        number: '123',
+        complement: 'Casa',
+        city: 'São Paulo',
+        state: 'SP',
+        zipCode: '12345-678',
+    },
     items: [
         {
-            id: new IdValueObject("1"),
+            id: new IdValueObject('1'),
             name: 'Item 1',
-            price: 100,
+            price: 10,
         },
         {
-            id: new IdValueObject("2"),
+            id: new IdValueObject('2'),
             name: 'Item 2',
-            price: 50,
+            price: 20,
         },
         {
-            id: new IdValueObject("3"),
+            id: new IdValueObject('3'),
             name: 'Item 3',
-            price: 25,
+            price: 30,
         }
     ],
-    total: 175,
+    total: 60,
+}
+
+
+
+const MockProductRepository = () => {
+
+    return {
+        generate: jest.fn().mockReturnValue(Promise.resolve(outputInvoice)),
+        findById: jest.fn(),
+    }
 }
 
 describe('GenerateInvoiceUsecase unit test', () => {
-    it('should generate an invoice', async () => {
+    it('should generate invoice', async () => {
+        const invoiceRepository = MockProductRepository();
 
-        const MockInvoiceRepository = () => {
-            return {
-                generate: jest.fn().mockReturnValue(Promise.resolve(invoice)),
-                findById: jest.fn(),
-            }
-        }
-
-        const invoiceRepository = MockInvoiceRepository();
         const generateInvoiceUsecase = new GenerateInvoiceUseCase(invoiceRepository);
 
-        const invoiceInputDto = {
-            name: invoice.name,
-            document: invoice.document,
-            ...invoiceAddress,
-            items: invoice.items.map(item => {
-                return {
-                    id: item.id.value,
-                    name: item.name,
-                    price: item.price,
+        const inputInvoice = {
+            name: 'Teste',
+            document: '12345678900',
+            street: 'Rua Teste',
+            number: '123',
+            complement: 'Casa',
+            city: 'São Paulo',
+            state: 'SP',
+            zipCode: '12345-678',
+            items: [
+                {
+                    id: '1',
+                    name: 'Item 1',
+                    price: 10,
+                },
+                {
+                    id: '2',
+                    name: 'Item 2',
+                    price: 20,
+                },
+                {
+                    id: '3',
+                    name: 'Item 3',
+                    price: 30,
                 }
-            })
+            ],
+            total: 60,
         }
 
-        const result = await generateInvoiceUsecase.execute(invoiceInputDto);
+        const invoiceGenerated = await generateInvoiceUsecase.execute(inputInvoice);
 
         expect(invoiceRepository.generate).toHaveBeenCalled();
-        expect(result.id).toBeDefined();
-        expect(result.name).toBe(invoice.name);
-        expect(result.document).toBe(invoice.document);
-        expect(result.street).toBe(invoice.address.street);
-        expect(result.number).toBe(invoice.address.number);
-        expect(result.complement).toBe(invoice.address.complement);
-        expect(result.city).toBe(invoice.address.city);
-        expect(result.state).toBe(invoice.address.state);
-        expect(result.zipCode).toBe(invoice.address.zipCode);
+        expect(invoiceGenerated.id).toBe(outputInvoice.id.value);
+        expect(invoiceGenerated.name).toBe(outputInvoice.name);
+        expect(invoiceGenerated.document).toBe(outputInvoice.document);
+        expect(invoiceGenerated.street).toBe(outputInvoice.address.street);
+        expect(invoiceGenerated.number).toBe(outputInvoice.address.number);
+        expect(invoiceGenerated.complement).toBe(outputInvoice.address.complement);
+        expect(invoiceGenerated.city).toBe(outputInvoice.address.city);
+        expect(invoiceGenerated.state).toBe(outputInvoice.address.state);
+        expect(invoiceGenerated.zipCode).toBe(outputInvoice.address.zipCode);
+        expect(invoiceGenerated.items[0].id).toBe(outputInvoice.items[0].id.value);
+        expect(invoiceGenerated.items[0].name).toBe(outputInvoice.items[0].name);
+        expect(invoiceGenerated.items[0].price).toBe(outputInvoice.items[0].price);
+        expect(invoiceGenerated.items[1].id).toBe(outputInvoice.items[1].id.value);
+        expect(invoiceGenerated.items[1].name).toBe(outputInvoice.items[1].name);
+        expect(invoiceGenerated.items[1].price).toBe(outputInvoice.items[1].price);
+        expect(invoiceGenerated.items[2].id).toBe(outputInvoice.items[2].id.value);
+        expect(invoiceGenerated.items[2].name).toBe(outputInvoice.items[2].name);
+        expect(invoiceGenerated.items[2].price).toBe(outputInvoice.items[2].price);
+        expect(invoiceGenerated.total).toBe(outputInvoice.total);
 
-        expect(result.items[0].id).toBe(invoice.items[0].id.value);
-        expect(result.items[0].name).toBe(invoice.items[0].name);
-        expect(result.items[0].price).toBe(invoice.items[0].price);
-        expect(result.items[1].id).toBe(invoice.items[1].id.value);
 
-        expect(result.items[1].name).toBe(invoice.items[1].name);
-        expect(result.items[1].price).toBe(invoice.items[1].price);
-        expect(result.items[2].id).toBe(invoice.items[2].id.value);
-
-        expect(result.items[2].name).toBe(invoice.items[2].name);
-        expect(result.items[2].price).toBe(invoice.items[2].price);
-
-        expect(result.total).toBe(invoice.total);
-
-    });
+    })
 });
